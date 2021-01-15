@@ -1673,6 +1673,7 @@ var jsc = {
 		this.alpha = undefined; // INITIAL alpha value. To change it later, call method channel('A', <value>)
 		this.onChange = undefined; // called when color changes. Value can be either a function or a string with JS code.
 		this.onInput = undefined; // called repeatedly as the color is being changed, e.g. while dragging a slider. Value can be either a function or a string with JS code.
+		this.onCloseButtonClick = undefined; // called when the close button is clicked
 		this.valueElement = undefined; // element that will be used to display and input the color value
 		this.alphaElement = undefined; // element that will be used to display and input the alpha (opacity) value
 		this.previewElement = undefined; // element that will preview the picked color using CSS background
@@ -2828,6 +2829,7 @@ var jsc = {
 			p.btn.style.cursor = 'pointer';
 			p.btn.onmousedown = function () {
 				THIS.hide();
+				jsc.triggerCallback(THIS, 'onCloseButtonClick');
 			};
 			p.btnT.style.lineHeight = THIS.buttonHeight + 'px';
 			p.btnT.innerHTML = '';
